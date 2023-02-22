@@ -1,1 +1,1 @@
-{"version":3,"sources":["ReportsMain.module.sass","ReportsMain.module.css"],"names":[],"mappings":"AAAA;EACE,YAAA;ACCF","file":"ReportsMain.module.css"}
+{"version":3,"sources":["ReportsMain.module.sass","ReportsMain.module.css","../../../styles/_vars.sass"],"names":[],"mappings":"AAEA;EACE,YAAA;ACDF;;ADGA;EACE,YAAA;EACA,gCAAA;EACA,aAAA;EACA,mBAAA;EACA,eAAA;ACAF;;ADGE;EACE,kBAAA;ACAJ;;ADEA;EACE,eAAA;EACA,kBAAA;ACCF;;ADCA;EACE,eAAA;EACA,yBEpBoB;EFqBpB,YAAA;EACA,kBAAA;ACEF;ADDE;EACE,iBAAA;ACGJ;ADFE;EACE,yBE5BW;EF6BX,WAAA;ACIJ","file":"ReportsMain.module.css"}
