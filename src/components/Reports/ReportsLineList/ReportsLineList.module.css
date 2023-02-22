@@ -1,0 +1,37 @@
+.item {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px 6px 24px;
+  width: 100%;
+}
+.item:hover {
+  background-color: #F2F2F7;
+}
+
+.arrow {
+  transform: rotate(-90deg);
+  width: 12px;
+  margin-right: 10px;
+}
+.arrow_open {
+  transform: rotate(90deg);
+}
+
+.open {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.problems {
+  font-size: 10px;
+  color: #373737;
+}
+.problems_count {
+  color: #E40510;
+}/*# sourceMappingURL=ReportsLineList.module.css.map */

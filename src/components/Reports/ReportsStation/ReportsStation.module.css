@@ -1,0 +1,28 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 12px 6px 56px;
+  width: 100%;
+}
+.item:hover {
+  background-color: #F2F2F7;
+}
+
+.open {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.problems {
+  font-size: 10px;
+  color: #373737;
+}
+.problems_count {
+  color: #E40510;
+}/*# sourceMappingURL=ReportsStation.module.css.map */

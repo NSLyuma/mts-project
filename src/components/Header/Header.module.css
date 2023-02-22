@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #F4F4F6;
+  border-bottom: 2px solid #e6e6e6;
   padding: 12px;
 }
 
@@ -26,7 +26,6 @@
 }
 
 .page {
-  background-color: #fff;
   font-size: 12px;
 }
 .page:not(:last-child) {

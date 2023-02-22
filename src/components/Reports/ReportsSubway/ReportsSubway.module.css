@@ -1,0 +1,41 @@
+.pages {
+  padding: 8px 12px;
+  border-bottom: 2px solid #e6e6e6;
+}
+
+.page {
+  background-color: #F2F2F7;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+}
+.page:not(:last-child) {
+  margin-right: 8px;
+}
+.page_active {
+  background-color: #E40510;
+  color: #fff;
+}
+
+.stations {
+  padding: 12px;
+}
+
+.search {
+  background-color: #F2F2F7;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search_input {
+  font-size: 12px;
+  width: 90%;
+}
+.search_icon {
+  width: 20px;
+  cursor: pointer;
+}/*# sourceMappingURL=ReportsSubway.module.css.map */

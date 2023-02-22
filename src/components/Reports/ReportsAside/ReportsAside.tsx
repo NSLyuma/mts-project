@@ -7,7 +7,7 @@ function ReportsAside(): JSX.Element {
   const [page, setPage] = useState<string>('subway');
 
   return (
-    <div>
+    <div className={styles.aside}>
       <div className={styles.head}>
         <button
           className={`${styles.page} ${

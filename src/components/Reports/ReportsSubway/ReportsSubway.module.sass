@@ -1,0 +1,35 @@
+@import ../../../styles/_vars.sass
+
+.pages
+  padding: 8px 12px
+  border-bottom: 2px solid $colorSecondary
+
+.page
+  background-color: $colorSecondaryLight
+  border-radius: 20px
+  font-size: 12px
+  font-weight: 500
+  padding: 4px 12px
+  &:not(:last-child)
+    margin-right: 8px
+  &_active
+    background-color: $colorPrimary
+    color: #fff
+
+.stations
+  padding: 12px
+
+.search
+  background-color: $colorSecondaryLight
+  border: 1px solid $colorSecondary
+  border-radius: 4px
+  padding: 4px 8px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  &_input
+    font-size: 12px
+    width: 90%
+  &_icon
+    width: 20px
+    cursor: pointer
