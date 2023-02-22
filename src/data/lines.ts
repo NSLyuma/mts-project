@@ -236,9 +236,9 @@ export const lines: Line[] = [
   {
     line: 'Каховская линия',
     stations: [
-      { name: 'Каширская', problemsCount: 3 },
-      { name: 'Варшавская', problemsCount: 3 },
-      { name: 'Каховская', problemsCount: 3 },
+      { name: 'Каширская', problemsCount: 0 },
+      { name: 'Варшавская', problemsCount: 0 },
+      { name: 'Каховская', problemsCount: 0 },
     ],
   },
   {

@@ -6,11 +6,6 @@ import styles from './ReportsCityList.module.css';
 function ReportsCityList(): JSX.Element {
   const [isOpenCity, setIsOpenCity] = useState<boolean>(false);
 
-  // const problemsCount = lines.reduce(
-  //   acc,
-  //   item.stations.reduce((acc, station) => acc + station.problemsCount, 0),
-  // );
-
   const totalProblemsCount = lines
     .map((line) =>
       line.stations.reduce((acc, station) => acc + station.problemsCount, 0),
@@ -32,10 +27,14 @@ function ReportsCityList(): JSX.Element {
         <div className={styles.open}>
           <span className={styles.title}>Москва и Московская область</span>
 
-          <span className={styles.problems}>
-            Проблем:{' '}
-            <span className={styles.problems_count}>{totalProblemsCount}</span>
-          </span>
+          {!!totalProblemsCount && (
+            <span className={styles.problems}>
+              Проблем:{' '}
+              <span className={styles.problems_count}>
+                {totalProblemsCount}
+              </span>
+            </span>
+          )}
         </div>
       </button>
 

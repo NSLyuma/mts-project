@@ -30,10 +30,12 @@ function ReportsLineList({ line }: Props): JSX.Element {
         <div className={styles.open}>
           <span className={styles.title}>{line.line}</span>
 
-          <span className={styles.problems}>
-            Проблем:{' '}
-            <span className={styles.problems_count}>{problemsCount}</span>
-          </span>
+          {!!problemsCount && (
+            <span className={styles.problems}>
+              Проблем:{' '}
+              <span className={styles.problems_count}>{problemsCount}</span>
+            </span>
+          )}
         </div>
       </button>
 
