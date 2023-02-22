@@ -15,13 +15,8 @@ function Header({ page, setPage }: Props): JSX.Element {
     <header className={`${styles.header} container`}>
       <div className={styles.left}>
         <div className={styles.logo}>
-          <img
-            className={styles.logo_img}
-            src="img/logo-icon.png"
-            alt="картинка логотипа"
-          />
-          <span>МТС</span>
-          <span>Метро</span>
+          <img className={styles.logo_img} src="/img/logo.svg" alt="лого" />
+          <span className={styles.logo_text}>Метро</span>
         </div>
 
         <nav>
@@ -33,6 +28,7 @@ function Header({ page, setPage }: Props): JSX.Element {
           >
             Отчеты
           </button>
+
           <button
             className={`${styles.page} ${
               page === 'analysis' && styles.page_active
@@ -44,7 +40,7 @@ function Header({ page, setPage }: Props): JSX.Element {
         </nav>
       </div>
 
-      <div>
+      <div className={styles.profile}>
         {firstName[0]}
         {secondName[0]}
       </div>

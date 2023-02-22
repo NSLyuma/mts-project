@@ -15,16 +15,40 @@
 .logo {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 .logo_img {
-  width: 20px;
+  height: 12px;
+}
+.logo_text {
+  color: #E40510;
+  margin-left: 4px;
+  font-size: 16px;
 }
 
 .page {
   border: none;
   background-color: #fff;
   cursor: pointer;
+  font-size: 12px;
+}
+.page:not(:last-child) {
+  margin-right: 16px;
 }
 .page_active {
   color: #E40510;
+}
+
+.profile {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #B9C0C8;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #fff;
 }/*# sourceMappingURL=Header.module.css.map */
