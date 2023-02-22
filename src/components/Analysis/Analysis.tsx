@@ -1,12 +1,7 @@
 import React from 'react';
 
 function Analysis(): JSX.Element {
-  return (
-    <div>
-      АНАЛИЗ
-      <p>Страница в разработке</p>
-    </div>
-  );
+  return <div>Страница в разработке</div>;
 }
 
 export default Analysis;

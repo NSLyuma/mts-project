@@ -1,12 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap')
+@import ./_vars.sass
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap')
 
 *
   margin: 0
   padding: 0
   box-sizing: border-box
-
-#root
   font-family: 'Roboto', 'Arial', 'Verdana', sans-serif
 
+button
+  border: none
+  cursor: pointer
+
 .container
-  padding: 0 calc( 50% - 570px )
+  margin: 0 calc( 50% - 570px )
+  border: 2px solid $colorSecondary

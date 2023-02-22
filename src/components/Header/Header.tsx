@@ -1,7 +1,6 @@
 import React from 'react';
 import { user } from '../../data/mockData';
 import styles from './Header.module.css';
-import '../../styles/index.css';
 
 type Props = {
   page: string;
@@ -12,7 +11,7 @@ function Header({ page, setPage }: Props): JSX.Element {
   const { firstName, secondName } = user;
 
   return (
-    <header className={`${styles.header} container`}>
+    <header className={styles.header}>
       <div className={styles.left}>
         <div className={styles.logo}>
           <img className={styles.logo_img} src="/img/logo.svg" alt="лого" />
@@ -40,10 +39,10 @@ function Header({ page, setPage }: Props): JSX.Element {
         </nav>
       </div>
 
-      <div className={styles.profile}>
+      <button className={styles.profile}>
         {firstName[0]}
         {secondName[0]}
-      </div>
+      </button>
     </header>
   );
 }

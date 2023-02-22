@@ -1,0 +1,23 @@
+.head {
+  height: 50px;
+  border-bottom: 2px solid #F4F4F6;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.page {
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  color: #8E9196;
+  padding: 4px 2px;
+  border-bottom: 2px solid transparent;
+}
+.page:not(:last-child) {
+  margin-right: 16px;
+}
+.page_active {
+  border-bottom: 2px solid #E40510;
+  color: #000;
+}/*# sourceMappingURL=ReportsAside.module.css.map */

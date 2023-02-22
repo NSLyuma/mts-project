@@ -1,0 +1,21 @@
+@import ../../../styles/_vars.sass
+
+.head
+  height: 50px
+  border-bottom: 2px solid $colorSecondary
+  display: flex
+  align-items: center
+  padding: 0 12px
+
+.page
+  background-color: transparent
+  font-size: 12px
+  font-weight: 700
+  color: $colorUnactive
+  padding: 4px 2px
+  border-bottom: 2px solid transparent
+  &:not(:last-child)
+    margin-right: 16px
+  &_active
+    border-bottom: 2px solid $colorPrimary
+    color: #000
