@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #F2F3F7;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo_img {
+  width: 20px;
+}
+
+.page {
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+.page_active {
+  color: #E40510;
+}/*# sourceMappingURL=Header.module.css.map */
