@@ -5,15 +5,16 @@ import styles from './ReportsLineList.module.css';
 
 type Props = {
   line: Line;
+  problemsCount: number;
+  isSearch: boolean;
 };
 
-function ReportsLineList({ line }: Props): JSX.Element {
+function ReportsLineList({
+  line,
+  problemsCount,
+  isSearch,
+}: Props): JSX.Element {
   const [isOpenLine, setIsOpenLine] = useState<boolean>(false);
-
-  const problemsCount = line.stations.reduce(
-    (acc, station) => acc + station.problemsCount,
-    0,
-  );
 
   return (
     <div className={styles.list}>
@@ -22,7 +23,9 @@ function ReportsLineList({ line }: Props): JSX.Element {
         onClick={(): void => setIsOpenLine((prev) => !prev)}
       >
         <img
-          className={`${styles.arrow} ${isOpenLine && styles.arrow_open}`}
+          className={`${styles.arrow} ${
+            isOpenLine || isSearch ? styles.arrow_open : ''
+          }`}
           src="/img/arrow.png"
           alt="стрелка"
         />
@@ -39,12 +42,14 @@ function ReportsLineList({ line }: Props): JSX.Element {
         </div>
       </button>
 
-      {isOpenLine && (
+      {isOpenLine || isSearch ? (
         <div className={styles.stations}>
           {line.stations.map((station) => (
-            <ReportsStation station={station} />
+            <ReportsStation station={station} key={station.name} />
           ))}
         </div>
+      ) : (
+        ''
       )}
     </div>
   );

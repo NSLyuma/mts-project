@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import { lines } from '../../../data/lines';
+import { Line, lines } from '../../../data/lines';
 import ReportsLineList from '../ReportsLineList/ReportsLineList';
 import styles from './ReportsCityList.module.css';
 
-function ReportsCityList(): JSX.Element {
+type Props = {
+  filteredLines: Line[];
+  isSearch: boolean;
+};
+
+function ReportsCityList({ filteredLines, isSearch }: Props): JSX.Element {
   const [isOpenCity, setIsOpenCity] = useState<boolean>(false);
 
-  const totalProblemsCount = lines
-    .map((line) =>
-      line.stations.reduce((acc, station) => acc + station.problemsCount, 0),
-    )
-    .reduce((acc, cur) => acc + cur, 0);
+  const linesProblemsCount = lines?.map((line) =>
+    line.stations.reduce((acc, station) => acc + station.problemsCount, 0),
+  );
+
+  const totalProblemsCount = linesProblemsCount.reduce(
+    (acc, cur) => acc + cur,
+    0,
+  );
 
   return (
     <div>
@@ -19,7 +27,9 @@ function ReportsCityList(): JSX.Element {
         onClick={(): void => setIsOpenCity((prev) => !prev)}
       >
         <img
-          className={`${styles.arrow} ${isOpenCity && styles.arrow_open}`}
+          className={`${styles.arrow} ${
+            isOpenCity || isSearch ? styles.arrow_open : ''
+          }`}
           src="/img/arrow.png"
           alt="стрелка"
         />
@@ -38,7 +48,19 @@ function ReportsCityList(): JSX.Element {
         </div>
       </button>
 
-      {isOpenCity && lines.map((line) => <ReportsLineList line={line} />)}
+      {isOpenCity || isSearch
+        ? filteredLines?.map(
+            (line, i) =>
+              !!line.stations.length && (
+                <ReportsLineList
+                  line={line}
+                  problemsCount={linesProblemsCount[i]}
+                  isSearch={isSearch}
+                  key={line.line}
+                />
+              ),
+          )
+        : ''}
     </div>
   );
 }
