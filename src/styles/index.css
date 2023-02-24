@@ -18,11 +18,6 @@ input {
   background-color: transparent;
 }
 
-select {
-  outline: none;
-  border: none;
-}
-
 ul,
 ol {
   list-style: none;
@@ -34,4 +29,24 @@ ol {
 
 .container {
   border: 2px solid #e6e6e6;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range {
+  background-color: #E40510 !important;
+}
+
+.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
+  background-color: rgba(228, 5, 16, 0.5) !important;
+}
+
+.react-datepicker__day--in-range:not(.react-datepicker__day--in-selecting-range) {
+  background-color: rgba(228, 5, 16, 0.5) !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: rgba(228, 5, 16, 0.5) !important;
+}
+.react-datepicker__day--keyboard-selected:hover {
+  background-color: #E40510 !important;
 }/*# sourceMappingURL=index.css.map */

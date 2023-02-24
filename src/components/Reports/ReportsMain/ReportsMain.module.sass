@@ -2,29 +2,45 @@
 
 .main
   flex-grow: 1
+  background-color: $colorSecondaryLight
 
 .head
   height: 50px
+  background-color: #fff
   border-bottom: 2px solid $colorSecondary
   display: flex
   align-items: center
   padding: 0 12px
+  flex-grow: 0
 
 .choice
   &:not(:last-child)
     margin-right: 20px
+  &_box
+    display: flex
 
 .text
-  font-size: 10px
+  font-size: $fontSmall
   margin-bottom: 4px
 
 .button
-  font-size: 10px
+  font-size: $fontSmall
   background-color: $colorSecondaryLight
-  padding: 4px
+  padding: 4px 8px
   border-radius: 4px
   &:not(:last-child)
     margin-right: 8px
   &_active
     background-color: $colorPrimary
     color: #fff
+  &_custom
+    display: flex
+  &_text
+    margin-right: 4px
+  &_divider
+    margin: 0 4px
+
+.picker
+  padding: 0
+  width: 51px
+  cursor: pointer

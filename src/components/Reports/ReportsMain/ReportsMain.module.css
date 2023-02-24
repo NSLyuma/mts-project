@@ -1,17 +1,23 @@
 .main {
   flex-grow: 1;
+  background-color: #F2F2F7;
 }
 
 .head {
   height: 50px;
+  background-color: #fff;
   border-bottom: 2px solid #e6e6e6;
   display: flex;
   align-items: center;
   padding: 0 12px;
+  flex-grow: 0;
 }
 
 .choice:not(:last-child) {
   margin-right: 20px;
+}
+.choice_box {
+  display: flex;
 }
 
 .text {
@@ -22,7 +28,7 @@
 .button {
   font-size: 10px;
   background-color: #F2F2F7;
-  padding: 4px;
+  padding: 4px 8px;
   border-radius: 4px;
 }
 .button:not(:last-child) {
@@ -31,4 +37,19 @@
 .button_active {
   background-color: #E40510;
   color: #fff;
+}
+.button_custom {
+  display: flex;
+}
+.button_text {
+  margin-right: 4px;
+}
+.button_divider {
+  margin: 0 4px;
+}
+
+.picker {
+  padding: 0;
+  width: 51px;
+  cursor: pointer;
 }/*# sourceMappingURL=ReportsMain.module.css.map */
