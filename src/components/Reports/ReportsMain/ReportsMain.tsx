@@ -5,9 +5,16 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import ru from 'date-fns/locale/ru/index.js';
 import ReportsCharts from '../ReportsCharts/ReportsCharts';
+import { getDateString } from '../../../helpers/getDateString';
+import add from 'date-fns/addDays';
 
 registerLocale('ru', ru);
 setDefaultLocale('ru');
+
+export type ProblemsData = {
+  date: string;
+  problems: number;
+};
 
 function ReportsMain(): JSX.Element {
   const [aggregation, setAggregation] = useState<string>('day');
@@ -15,6 +22,20 @@ function ReportsMain(): JSX.Element {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [endDate, setEndDate] = useState<Date>(new Date());
 
+  const problemsData: ProblemsData[] = [];
+
+  let currentDate = startDate;
+
+  while (currentDate <= endDate) {
+    problemsData.push({
+      date: getDateString(currentDate),
+      problems: Math.floor(Math.random() * 10),
+    });
+    currentDate = add(currentDate, 1);
+  }
+
+  // TODO: кнопки можно оптимизировать
+  // https://ant.design/components/radio
   return (
     <div className={styles.main}>
       <div className={styles.head}>
@@ -132,7 +153,7 @@ function ReportsMain(): JSX.Element {
         </div>
       </div>
 
-      <ReportsCharts />
+      <ReportsCharts problemsData={problemsData} />
     </div>
   );
 }

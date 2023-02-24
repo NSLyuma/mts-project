@@ -1,7 +1,7 @@
 .item {
   display: flex;
   flex-direction: column;
-  padding: 6px 12px 6px 56px;
+  padding: 6px 20px 6px 64px;
   width: 100%;
 }
 .item:hover {

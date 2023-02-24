@@ -21,7 +21,7 @@ function ReportsCityList({ filteredLines, isSearch }: Props): JSX.Element {
   );
 
   return (
-    <div>
+    <div className={styles.cities}>
       <button
         className={styles.item}
         onClick={(): void => setIsOpenCity((prev) => !prev)}

@@ -1,7 +1,7 @@
 @import ../../../styles/_vars.sass
 
 .pages
-  padding: 8px 12px
+  padding: 8px $paddingMain
   border-bottom: 2px solid $colorSecondary
 
 .page
@@ -17,16 +17,18 @@
     color: #fff
 
 .stations
-  padding: 12px
+  padding: 12px $paddingMain
 
 .search
-  background-color: $colorSecondaryLight
-  border: 1px solid $colorSecondary
-  border-radius: 4px
-  padding: 4px 8px
-  display: flex
-  justify-content: space-between
-  align-items: center
+  padding: 12px $paddingMain
+  &_container
+    background-color: $colorSecondaryLight
+    border: 1px solid $colorSecondary
+    border-radius: 4px
+    padding: 4px 8px
+    display: flex
+    justify-content: space-between
+    align-items: center
   &_input
     font-size: $fontMedium
     width: 90%

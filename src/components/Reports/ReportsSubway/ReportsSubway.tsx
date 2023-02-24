@@ -42,8 +42,8 @@ function ReportsSubway(): JSX.Element {
         </button>
       </div>
 
-      <div className={styles.stations}>
-        <div className={styles.search}>
+      <div className={styles.search}>
+        <div className={styles.search_container}>
           <input
             className={styles.search_input}
             type="text"

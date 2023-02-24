@@ -1,1 +1,19 @@
-/*# sourceMappingURL=ReportsCharts.module.css.map */
+.charts {
+  padding: 20px;
+}
+.charts_top, .charts_bottom {
+  background-color: #fff;
+  padding: 20px;
+  width: 100%;
+  border: 2px solid #e6e6e6;
+}
+.charts_top {
+  border-bottom: 1px solid #e6e6e6;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.charts_bottom {
+  border-top: 1px solid #e6e6e6;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}/*# sourceMappingURL=ReportsCharts.module.css.map */
