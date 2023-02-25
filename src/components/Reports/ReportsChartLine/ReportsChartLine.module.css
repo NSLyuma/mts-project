@@ -1,0 +1,9 @@
+.chart {
+  display: flex;
+  flex-direction: column;
+}
+.chart_title {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}/*# sourceMappingURL=ReportsChartLine.module.css.map */

@@ -1,6 +1,5 @@
 .aside {
-  max-width: 300px;
-  flex-grow: 0;
+  width: 300px;
   border-right: 2px solid #e6e6e6;
 }
 

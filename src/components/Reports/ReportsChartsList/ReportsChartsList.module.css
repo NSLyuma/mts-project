@@ -1,0 +1,40 @@
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.page {
+  background-color: #F2F2F7;
+  padding: 4px 16px;
+}
+.page_left {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.page_right {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.page_arrow {
+  width: 16px;
+  height: 12px;
+}
+.page_arrow path {
+  fill: #000;
+}
+.page_arrow_left {
+  transform: rotate(-90deg);
+}
+.page_arrow_right {
+  transform: rotate(90deg);
+}
+.page:hover, .page_active {
+  background-color: #E40510;
+}
+.page:hover .page_arrow path, .page_active .page_arrow path {
+  fill: #fff;
+}
+
+.list {
+  display: flex;
+}/*# sourceMappingURL=ReportsChartsList.module.css.map */

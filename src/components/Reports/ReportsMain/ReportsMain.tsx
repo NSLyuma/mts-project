@@ -5,8 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import ru from 'date-fns/locale/ru/index.js';
 import ReportsCharts from '../ReportsCharts/ReportsCharts';
-import { getDateString } from '../../../helpers/getDateString';
-import add from 'date-fns/addDays';
+import { getDateAgo, getDatesList } from '../../../helpers/datesHelper';
 
 registerLocale('ru', ru);
 setDefaultLocale('ru');
@@ -19,22 +18,31 @@ export type ProblemsData = {
 function ReportsMain(): JSX.Element {
   const [aggregation, setAggregation] = useState<string>('day');
   const [period, setPeriod] = useState<string>('7d');
-  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [startDate, setStartDate] = useState<Date>(getDateAgo(new Date(), 6));
   const [endDate, setEndDate] = useState<Date>(new Date());
 
   const problemsData: ProblemsData[] = [];
 
-  let currentDate = startDate;
-
-  while (currentDate <= endDate) {
+  getDatesList(startDate, endDate).map((date) =>
     problemsData.push({
-      date: getDateString(currentDate),
+      date,
       problems: Math.floor(Math.random() * 10),
-    });
-    currentDate = add(currentDate, 1);
-  }
+    }),
+  );
 
-  // TODO: кнопки можно оптимизировать
+  const setPeriodChart = (period: string, days: number): void => {
+    setPeriod(period);
+    setEndDate(new Date());
+    setStartDate(getDateAgo(endDate, days));
+    getDatesList(startDate, endDate).map((date) =>
+      problemsData.push({
+        date,
+        problems: Math.floor(Math.random() * 10),
+      }),
+    );
+  };
+
+  // кнопки можно оптимизировать
   // https://ant.design/components/radio
   return (
     <div className={styles.main}>
@@ -80,7 +88,7 @@ function ReportsMain(): JSX.Element {
               className={`${styles.button} ${
                 period === '7d' && styles.button_active
               }`}
-              onClick={(): void => setPeriod('7d')}
+              onClick={(): void => setPeriodChart('7d', 6)}
             >
               7Д
             </button>
@@ -89,7 +97,7 @@ function ReportsMain(): JSX.Element {
               className={`${styles.button} ${
                 period === '10d' && styles.button_active
               }`}
-              onClick={(): void => setPeriod('10d')}
+              onClick={(): void => setPeriodChart('10d', 9)}
             >
               10Д
             </button>
@@ -98,7 +106,7 @@ function ReportsMain(): JSX.Element {
               className={`${styles.button} ${
                 period === '14d' && styles.button_active
               }`}
-              onClick={(): void => setPeriod('14d')}
+              onClick={(): void => setPeriodChart('14d', 13)}
             >
               14Д
             </button>
@@ -107,7 +115,7 @@ function ReportsMain(): JSX.Element {
               className={`${styles.button} ${
                 period === 'month' && styles.button_active
               }`}
-              onClick={(): void => setPeriod('month')}
+              onClick={(): void => setPeriodChart('month', 31)}
             >
               Мес
             </button>

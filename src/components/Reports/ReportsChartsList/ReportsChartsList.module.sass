@@ -1,0 +1,32 @@
+@import ../../../styles/_vars.sass
+
+.buttons
+  display: flex
+  justify-content: flex-end
+
+.page
+  background-color: $colorSecondaryLight
+  padding: 4px 16px
+  &_left
+    border-top-left-radius: 6px
+    border-bottom-left-radius: 6px
+  &_right
+    border-top-right-radius: 6px
+    border-bottom-right-radius: 6px
+  &_arrow
+    width: 16px
+    height: 12px
+    & path
+      fill: #000
+    &_left
+      transform: rotate(-90deg)
+    &_right
+      transform: rotate(90deg)
+  &:hover,
+  &_active
+    background-color: $colorPrimary
+    .page_arrow path
+      fill: #fff
+
+.list
+  display: flex
