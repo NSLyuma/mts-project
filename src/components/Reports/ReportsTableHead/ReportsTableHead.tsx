@@ -32,7 +32,6 @@ function ReportsTableHead({
           <StyledTableCell
             className={styles.cell}
             key={headCell.id}
-            padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel

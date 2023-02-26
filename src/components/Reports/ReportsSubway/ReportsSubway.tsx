@@ -18,8 +18,7 @@ function ReportsSubway(): JSX.Element {
 
   useEffect(() => {
     dispatch(getLines());
-    setFilteredLines(lines);
-  }, [dispatch, lines]);
+  }, [dispatch]);
 
   const onInputChange = (): void => {
     setFilteredLines(
@@ -74,7 +73,7 @@ function ReportsSubway(): JSX.Element {
       {page === 'all' ? (
         <ReportsCityList
           lines={lines}
-          filteredLines={filteredLines}
+          filteredLines={!!search.current?.value ? filteredLines : lines}
           isSearch={!!search.current?.value}
         />
       ) : (

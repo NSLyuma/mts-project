@@ -49,10 +49,8 @@ export type TableData = {
 };
 
 export interface HeadCell {
-  disablePadding: boolean;
   id: keyof TableData;
   label: string;
-  numeric: boolean;
 }
 
 export type Order = 'asc' | 'desc';
