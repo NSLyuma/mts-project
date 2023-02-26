@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './ReportsTableHead.module.css';
 import {
   TableCell,
   TableHead,
@@ -24,8 +25,17 @@ type Props = {
 const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
     fontSize: 10,
-    align: 'left',
+    textAlign: 'left',
     padding: 0,
+    borderBottom: '1px solid #e6e6e6',
+    color: '#000',
+    whiteSpace: 'nowrap',
+  },
+  '&:first-child': {
+    paddingLeft: '20px',
+  },
+  '&:last-child': {
+    paddingRight: '20px',
   },
 }));
 
@@ -44,6 +54,7 @@ function ReportsTableHead({
       <TableRow>
         {headCells.map((headCell) => (
           <StyledTableCell
+            className={styles.cell}
             key={headCell.id}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}

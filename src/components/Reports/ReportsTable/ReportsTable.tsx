@@ -9,6 +9,7 @@ import {
   TablePagination,
   TableRow,
   tableCellClasses,
+  tablePaginationClasses,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ReportsTableHead from '../ReportsTableHead/ReportsTableHead';
@@ -18,10 +19,25 @@ type Props = {
   station: string;
 };
 
-const StyledTableCell = styled(TableCell)(() => ({
+const StyledTableCell: any = styled(TableCell)(() => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: 10,
-    padding: 0,
+    padding: '2px 5px 2px 0',
+  },
+  '&:first-child': {
+    paddingLeft: '20px',
+  },
+  '&:last-child': {
+    paddingRight: '20px',
+  },
+}));
+
+const StyledTablePagination: any = styled(TablePagination)(() => ({
+  [`&.${tablePaginationClasses.root}, div`]: {
+    minHeight: 0,
+  },
+  [`&.${tablePaginationClasses.root}, p`]: {
+    fontSize: 10,
   },
 }));
 
@@ -64,9 +80,6 @@ function ReportsTable({ station }: Props): JSX.Element {
     setPage(0);
   };
 
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - data.length) : 0;
-
   return (
     <div className={styles.layout}>
       <p className={styles.title}>Таблица метрик: {station}</p>
@@ -95,14 +108,9 @@ function ReportsTable({ station }: Props): JSX.Element {
                   <StyledTableCell>{item.speedMF}</StyledTableCell>
                 </TableRow>
               ))}
-            {emptyRows > 0 && (
-              <TableRow>
-                <StyledTableCell colSpan={6} />
-              </TableRow>
-            )}
           </TableBody>
         </Table>
-        <TablePagination
+        <StyledTablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={data.length}
