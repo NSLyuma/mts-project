@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './ReportsChartLine.module.css';
-import { Characteristic } from '../../../data/mockData';
 import {
-  Chart as ChartJS,
+  Chart as ChartJSLine,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -13,12 +12,13 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { ChartData, ChartOptions } from 'chart.js';
+import { Characteristic } from '../../../data/types';
 
 type Props = {
   characteristic: Characteristic;
 };
 
-ChartJS.register(
+ChartJSLine.register(
   CategoryScale,
   LinearScale,
   PointElement,
@@ -28,8 +28,7 @@ ChartJS.register(
   Legend,
 );
 
-ChartJS.defaults.font.size = 10;
-ChartJS.defaults.font.family = 'Roboto';
+ChartJSLine.defaults.font.size = 12;
 
 const colors = ['#E40510', '#E87F1D', '#93003E', '#03AA3D', '#C1ED1A'];
 
@@ -48,6 +47,7 @@ function ReportsChartLine({ characteristic }: Props): JSX.Element {
           boxWidth: 10,
           boxHeight: 10,
           color: '#000',
+          font: { size: 10 },
         },
       },
       datalabels: {

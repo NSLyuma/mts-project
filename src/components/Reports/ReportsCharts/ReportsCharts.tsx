@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './ReportsCharts.module.css';
 import {
   Chart as ChartJS,
@@ -12,7 +12,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js';
 import { ProblemsData } from '../ReportsMain/ReportsMain';
-import { ReportsContext } from '../../../helpers/reportsStore';
+import { StationData } from '../../../helpers/reportsStore';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import ReportsChartsList from '../ReportsChartsList/ReportsChartsList';
 
@@ -32,10 +32,10 @@ ChartJS.defaults.font.family = 'Roboto';
 
 type Props = {
   problemsData: ProblemsData[];
+  station: StationData;
 };
 
-function ReportsCharts({ problemsData }: Props): JSX.Element {
-  const { state } = useContext(ReportsContext);
+function ReportsCharts({ problemsData, station }: Props): JSX.Element {
   const maxProblemsValue = Math.max.apply(
     null,
     problemsData.map((item) => item.problems),
@@ -84,31 +84,25 @@ function ReportsCharts({ problemsData }: Props): JSX.Element {
   };
 
   return (
-    <div className={styles.charts}>
+    <>
       <div className={styles.bar}>
-        {state.station.isOpenCharts ? (
-          <>
-            <p className={styles.bar_title}>
-              График проблемных объектов: {state.station.name}
-            </p>
+        <p className={styles.bar_title}>
+          График проблемных объектов: {station.name}
+        </p>
 
-            <Bar
-              className={styles.bar_chart}
-              height={'70px'}
-              options={options}
-              plugins={[ChartDataLabels]}
-              data={data}
-            />
-          </>
-        ) : (
-          <p className={styles.bar_title}>Нет данных {state.station.name}</p>
-        )}
+        <Bar
+          className={styles.bar_chart}
+          height={'70px'}
+          options={options}
+          plugins={[ChartDataLabels]}
+          data={data}
+        />
       </div>
 
       <div className={styles.lines}>
         <ReportsChartsList />
       </div>
-    </div>
+    </>
   );
 }
 

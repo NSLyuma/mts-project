@@ -1,7 +1,7 @@
 // небольшое хранилище для данных станций
 import { createContext } from 'react';
 
-type StationData = {
+export type StationData = {
   isOpenCharts: boolean;
   name: string;
 };

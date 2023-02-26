@@ -1,8 +1,5 @@
 @import ../../../styles/_vars.sass
 
-.charts
-  padding: $paddingMain
-
 .bar,
 .lines
   background-color: #fff
@@ -15,12 +12,9 @@
   border-top-left-radius: 10px
   border-top-right-radius: 10px
   &_title
-    font-size: $fontMedium
-    font-weight: 700
-    margin-bottom: 10px
-
+    @include chartTableTitle
 .lines
   border-top: 1px solid $colorSecondary
   border-bottom-left-radius: 10px
   border-bottom-right-radius: 10px
-  padding-top: 2px
+  padding-top: 4px

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './ReportsMain.module.css';
 import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -6,6 +6,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import ru from 'date-fns/locale/ru/index.js';
 import ReportsCharts from '../ReportsCharts/ReportsCharts';
 import { getDateAgo, getDatesList } from '../../../helpers/datesHelper';
+import { ReportsContext } from '../../../helpers/reportsStore';
+import ReportsTable from '../ReportsTable/ReportsTable';
 
 registerLocale('ru', ru);
 setDefaultLocale('ru');
@@ -20,6 +22,8 @@ function ReportsMain(): JSX.Element {
   const [period, setPeriod] = useState<string>('7d');
   const [startDate, setStartDate] = useState<Date>(getDateAgo(new Date(), 6));
   const [endDate, setEndDate] = useState<Date>(new Date());
+
+  const { state } = useContext(ReportsContext);
 
   const problemsData: ProblemsData[] = [];
 
@@ -42,8 +46,6 @@ function ReportsMain(): JSX.Element {
     );
   };
 
-  // кнопки можно оптимизировать
-  // https://ant.design/components/radio
   return (
     <div className={styles.main}>
       <div className={styles.head}>
@@ -161,7 +163,14 @@ function ReportsMain(): JSX.Element {
         </div>
       </div>
 
-      <ReportsCharts problemsData={problemsData} />
+      {state.station.isOpenCharts ? (
+        <div className={styles.data}>
+          <ReportsCharts problemsData={problemsData} station={state.station} />
+          <ReportsTable station={state.station.name} />
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 }

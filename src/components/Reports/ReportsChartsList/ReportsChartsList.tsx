@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Characteristic } from '../../../data/mockData';
+import { Characteristic } from '../../../data/types';
 import ReportsChartLine from '../ReportsChartLine/ReportsChartLine';
 import styles from './ReportsChartsList.module.css';
 
@@ -8,7 +8,7 @@ function ReportsChartsList(): JSX.Element {
 
   useEffect(() => {
     const getData = async (): Promise<void> => {
-      const url = 'https://api.npoint.io/1ef77a97bf23acc548e2';
+      const url = 'https://api.npoint.io/a75cf82069215a60a8e2';
       const response = await fetch(url);
       const data = await response.json();
       setData(data);
