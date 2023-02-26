@@ -40,7 +40,7 @@ function ReportsMain(): JSX.Element {
         ]),
       );
     }
-  }, [startDate, endDate, state.station.name, aggregation]);
+  }, [startDate, endDate, state.station.name]);
 
   const setPeriodChart = (period: string, days: number): void => {
     setPeriod(period);
@@ -122,9 +122,7 @@ function ReportsMain(): JSX.Element {
             { date, problems: Math.floor(Math.random() * 10) },
           ]),
         );
-      }
-
-      if (aggregation === 'week') {
+      } else if (aggregation === 'week') {
         const count = Math.ceil(6 / 7);
         const periods = [];
 
@@ -188,7 +186,10 @@ function ReportsMain(): JSX.Element {
               className={`${styles.button} ${
                 aggregation === 'day' && styles.button_active
               }`}
-              onClick={(): void => setAggregationChart('day')}
+              onClick={(): void => {
+                setAggregationChart('day');
+                setPeriod('7d');
+              }}
             >
               День
             </button>
