@@ -22,6 +22,11 @@ export const getCharacteristics = createAsyncThunk(
   },
 );
 
+export const getTable = createAsyncThunk('reports/table', async () => {
+  const data = await reportsApi.requestTable();
+  return data;
+});
+
 export const reportsSlice = createSlice({
   name: 'reports',
   initialState,
@@ -38,6 +43,12 @@ export const reportsSlice = createSlice({
         state.characteristics = action.payload;
       })
       .addCase(getCharacteristics.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(getTable.fulfilled, (state, action) => {
+        state.table = action.payload;
+      })
+      .addCase(getTable.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

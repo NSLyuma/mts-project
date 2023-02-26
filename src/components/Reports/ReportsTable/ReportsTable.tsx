@@ -14,6 +14,9 @@ import {
 import { styled } from '@mui/material/styles';
 import ReportsTableHead from '../ReportsTableHead/ReportsTableHead';
 import { getComparator, stableSort } from '../../../helpers/sortTableHelper';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../../store/store';
+import { getTable } from '../reportsSlice';
 
 type Props = {
   station: string;
@@ -42,22 +45,20 @@ const StyledTablePagination: any = styled(TablePagination)(() => ({
 }));
 
 function ReportsTable({ station }: Props): JSX.Element {
-  const [data, setData] = useState<TableData[]>([]);
   const [order, setOrder] = useState<Order>('asc');
   const [orderBy, setOrderBy] = useState<keyof TableData>('date');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  useEffect(() => {
-    const getData = async (): Promise<void> => {
-      const url = 'https://api.npoint.io/1e37c5287711e07d1fe7';
-      const response = await fetch(url);
-      const data = await response.json();
-      setData(data);
-    };
+  const table: TableData[] = useSelector(
+    (state: RootState) => state.reports.table,
+  );
 
-    getData().catch(console.error);
-  }, []);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getTable());
+  }, [dispatch]);
 
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
@@ -90,7 +91,7 @@ function ReportsTable({ station }: Props): JSX.Element {
             onRequestSort={handleRequestSort}
           />
           <TableBody>
-            {stableSort(data, getComparator(order, orderBy))
+            {stableSort(table, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((item) => (
                 <TableRow hover tabIndex={-1} key={item.id}>
@@ -112,7 +113,7 @@ function ReportsTable({ station }: Props): JSX.Element {
         <StyledTablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={data.length}
+          count={table.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -120,10 +121,10 @@ function ReportsTable({ station }: Props): JSX.Element {
           labelRowsPerPage={'Количество строк:'}
           labelDisplayedRows={(): string =>
             `${page * rowsPerPage + 1}–${
-              rowsPerPage * (page + 1) > data.length
-                ? data.length
+              rowsPerPage * (page + 1) > table.length
+                ? table.length
                 : rowsPerPage * (page + 1)
-            } из ${data.length}`
+            } из ${table.length}`
           }
         />
       </Box>
