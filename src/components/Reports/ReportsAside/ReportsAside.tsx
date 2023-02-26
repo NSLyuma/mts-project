@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { ReportsContext } from '../../../store/reportsStore';
 import ReportsDevices from '../ReportsDevices/ReportsDevices';
 import ReportsSubway from '../ReportsSubway/ReportsSubway';
 import styles from './ReportsAside.module.css';
 
 function ReportsAside(): JSX.Element {
   const [page, setPage] = useState<string>('subway');
+
+  const { dispatch } = useContext(ReportsContext);
 
   return (
     <div className={styles.aside}>
@@ -22,7 +25,13 @@ function ReportsAside(): JSX.Element {
           className={`${styles.page} ${
             page === 'devices' && styles.page_active
           }`}
-          onClick={(): void => setPage('devices')}
+          onClick={(): void => {
+            setPage('devices');
+            dispatch({
+              type: 'SET_OPEN_CHARTS',
+              payload: { isOpenCharts: false, name: '' },
+            });
+          }}
         >
           Список устройств
         </button>

@@ -1,26 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Line } from '../../../data/types';
+import { RootState, useAppDispatch } from '../../../store/store';
 import ReportsCityList from '../ReportsCityList/ReportsCityList';
+import { getLines } from '../reportsSlice';
 import styles from './ReportsSubway.module.css';
 
 function ReportsSubway(): JSX.Element {
   const [page, setPage] = useState<string>('all');
-  const [lines, setLines] = useState<Line[]>([]);
   const [filteredLines, setFilteredLines] = useState<Line[]>([]);
 
-  useEffect(() => {
-    const getData = async (): Promise<void> => {
-      const url = 'https://api.npoint.io/06b0972611331defc733';
-      const response = await fetch(url);
-      const data = await response.json();
-      setLines(data);
-      setFilteredLines(data);
-    };
-
-    getData().catch(console.error);
-  }, []);
-
   const search = useRef<HTMLInputElement>(null);
+
+  const lines: Line[] = useSelector((state: RootState) => state.reports.lines);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getLines());
+    setFilteredLines(lines);
+  }, [dispatch, lines]);
 
   const onInputChange = (): void => {
     setFilteredLines(

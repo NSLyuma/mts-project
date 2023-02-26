@@ -56,3 +56,10 @@ export interface HeadCell {
 }
 
 export type Order = 'asc' | 'desc';
+
+export type ReportsStoreState = {
+  lines: Line[];
+  table: TableData[];
+  characteristics: Characteristic[];
+  error: string | undefined;
+};
