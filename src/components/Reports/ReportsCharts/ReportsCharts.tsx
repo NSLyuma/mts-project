@@ -12,7 +12,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js';
 import { ProblemsData } from '../ReportsMain/ReportsMain';
-import { StationData } from '../../../helpers/reportsStore';
+import { StationData } from '../../../store/reportsStore';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import ReportsChartsList from '../ReportsChartsList/ReportsChartsList';
 

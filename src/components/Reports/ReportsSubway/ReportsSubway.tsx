@@ -1,11 +1,24 @@
-import React, { useState, useRef } from 'react';
-import { Line, lines } from '../../../data/lines';
+import React, { useState, useRef, useEffect } from 'react';
+import { Line } from '../../../data/types';
 import ReportsCityList from '../ReportsCityList/ReportsCityList';
 import styles from './ReportsSubway.module.css';
 
 function ReportsSubway(): JSX.Element {
   const [page, setPage] = useState<string>('all');
-  const [filteredLines, setFilteredLines] = useState<Line[]>(lines);
+  const [lines, setLines] = useState<Line[]>([]);
+  const [filteredLines, setFilteredLines] = useState<Line[]>([]);
+
+  useEffect(() => {
+    const getData = async (): Promise<void> => {
+      const url = 'https://api.npoint.io/06b0972611331defc733';
+      const response = await fetch(url);
+      const data = await response.json();
+      setLines(data);
+      setFilteredLines(data);
+    };
+
+    getData().catch(console.error);
+  }, []);
 
   const search = useRef<HTMLInputElement>(null);
 
@@ -61,6 +74,7 @@ function ReportsSubway(): JSX.Element {
 
       {page === 'all' ? (
         <ReportsCityList
+          lines={lines}
           filteredLines={filteredLines}
           isSearch={!!search.current?.value}
         />

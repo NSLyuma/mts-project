@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { Station } from '../../../data/lines';
-import { ReportsContext } from '../../../helpers/reportsStore';
+import { Station } from '../../../data/types';
+import { ReportsContext } from '../../../store/reportsStore';
 import styles from './ReportsStation.module.css';
 
 type Props = {

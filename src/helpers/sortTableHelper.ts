@@ -22,10 +22,10 @@ export function getComparator<Key extends keyof any>(
     : (a, b): number => -descendingComparator(a, b, orderBy);
 }
 
-export function stableSort(
+export const stableSort = (
   array: TableData[],
   comparator: (a: any, b: any) => number,
-): any[] {
+): any[] => {
   const stabilizedThis = array.map((el, index) => [el, index] as [any, number]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -35,4 +35,4 @@ export function stableSort(
     return a[1] - b[1];
   });
   return stabilizedThis.map((el) => el[0]);
-}
+};

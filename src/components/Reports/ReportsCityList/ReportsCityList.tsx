@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { Line, lines } from '../../../data/lines';
+import { Line } from '../../../data/types';
 import ReportsLineList from '../ReportsLineList/ReportsLineList';
 import styles from './ReportsCityList.module.css';
 
 type Props = {
+  lines: Line[];
   filteredLines: Line[];
   isSearch: boolean;
 };
 
-function ReportsCityList({ filteredLines, isSearch }: Props): JSX.Element {
+function ReportsCityList({
+  lines,
+  filteredLines,
+  isSearch,
+}: Props): JSX.Element {
   const [isOpenCity, setIsOpenCity] = useState<boolean>(false);
 
   const linesProblemsCount = lines?.map((line) =>

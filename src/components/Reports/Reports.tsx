@@ -6,7 +6,7 @@ import {
   initialReportsState,
   ReportsContext,
   reportsReducer,
-} from '../../helpers/reportsStore';
+} from '../../store/reportsStore';
 
 function Reports(): JSX.Element {
   const [state, dispatch] = useReducer(reportsReducer, initialReportsState);

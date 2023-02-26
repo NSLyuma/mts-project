@@ -3,6 +3,16 @@ export type User = {
   secondName: string;
 };
 
+export type Station = {
+  name: string;
+  problemsCount: number;
+};
+
+export type Line = {
+  line: string;
+  stations: Station[];
+};
+
 export type Problem = {
   date: Date;
   problems: number;

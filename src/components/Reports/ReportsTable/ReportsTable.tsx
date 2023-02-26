@@ -24,10 +24,10 @@ const StyledTableCell: any = styled(TableCell)(() => ({
     fontSize: 10,
     padding: '2px 5px 2px 0',
   },
-  '&:first-child': {
+  '&:first-of-type': {
     paddingLeft: '20px',
   },
-  '&:last-child': {
+  '&:last-of-type': {
     paddingRight: '20px',
   },
 }));
@@ -54,7 +54,6 @@ function ReportsTable({ station }: Props): JSX.Element {
       const response = await fetch(url);
       const data = await response.json();
       setData(data);
-      console.log('DATA', data);
     };
 
     getData().catch(console.error);

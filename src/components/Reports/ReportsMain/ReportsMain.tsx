@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import ru from 'date-fns/locale/ru/index.js';
 import ReportsCharts from '../ReportsCharts/ReportsCharts';
 import { getDateAgo, getDatesList } from '../../../helpers/datesHelper';
-import { ReportsContext } from '../../../helpers/reportsStore';
+import { ReportsContext } from '../../../store/reportsStore';
 import ReportsTable from '../ReportsTable/ReportsTable';
 
 registerLocale('ru', ru);

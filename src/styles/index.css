@@ -49,4 +49,8 @@ ol {
 }
 .react-datepicker__day--keyboard-selected:hover {
   background-color: #E40510 !important;
+}
+
+.MuiTablePagination-menuItem, li {
+  font-size: 10px !important;
 }/*# sourceMappingURL=index.css.map */

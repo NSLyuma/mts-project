@@ -31,10 +31,10 @@ const StyledTableCell = styled(TableCell)(() => ({
     color: '#000',
     whiteSpace: 'nowrap',
   },
-  '&:first-child': {
+  '&:first-of-type': {
     paddingLeft: '20px',
   },
-  '&:last-child': {
+  '&:last-of-type': {
     paddingRight: '20px',
   },
 }));

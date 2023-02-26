@@ -34,7 +34,7 @@ const colors = ['#E40510', '#E87F1D', '#93003E', '#03AA3D', '#C1ED1A'];
 
 function ReportsChartLine({ characteristic }: Props): JSX.Element {
   const options: ChartOptions<'line'> = {
-    responsive: false,
+    responsive: true,
     interaction: {
       intersect: false,
     },
@@ -87,7 +87,7 @@ function ReportsChartLine({ characteristic }: Props): JSX.Element {
   return (
     <div className={styles.chart}>
       <p className={styles.chart_title}>{characteristic.name}</p>
-      <Line options={options} data={data} width={250} height={200} />
+      <Line options={options} data={data} height={200} />
     </div>
   );
 }

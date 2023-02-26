@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Line } from '../../../data/lines';
+import { Line } from '../../../data/types';
 import ReportsStation from '../ReportsStation/ReportsStation';
 import styles from './ReportsLineList.module.css';
 
