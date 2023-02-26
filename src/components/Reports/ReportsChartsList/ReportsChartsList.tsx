@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Characteristic } from '../../../data/types';
+import { RootState, useAppDispatch } from '../../../store/store';
 import ReportsChartLine from '../ReportsChartLine/ReportsChartLine';
+import { getCharacteristics } from '../reportsSlice';
 import styles from './ReportsChartsList.module.css';
 
 function ReportsChartsList(): JSX.Element {
-  const [data, setData] = useState<Characteristic[]>([]);
+  const characteristics: Characteristic[] = useSelector(
+    (state: RootState) => state.reports.characteristics,
+  );
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const getData = async (): Promise<void> => {
-      const url = 'https://api.npoint.io/a75cf82069215a60a8e2';
-      const response = await fetch(url);
-      const data = await response.json();
-      setData(data);
-    };
-
-    getData().catch(console.error);
-  }, []);
+    dispatch(getCharacteristics());
+  }, [dispatch]);
 
   return (
     <>
@@ -42,7 +42,7 @@ function ReportsChartsList(): JSX.Element {
       </div>
 
       <div className={styles.list}>
-        {data.map((characteristic) => (
+        {characteristics.map((characteristic) => (
           <ReportsChartLine
             key={characteristic.name}
             characteristic={characteristic}

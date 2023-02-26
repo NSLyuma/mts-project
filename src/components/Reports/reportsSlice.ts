@@ -14,6 +14,14 @@ export const getLines = createAsyncThunk('reports/lines', async () => {
   return data;
 });
 
+export const getCharacteristics = createAsyncThunk(
+  'reports/characteristics',
+  async () => {
+    const data = await reportsApi.requestCharacteristics();
+    return data;
+  },
+);
+
 export const reportsSlice = createSlice({
   name: 'reports',
   initialState,
@@ -24,6 +32,12 @@ export const reportsSlice = createSlice({
         state.lines = action.payload;
       })
       .addCase(getLines.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(getCharacteristics.fulfilled, (state, action) => {
+        state.characteristics = action.payload;
+      })
+      .addCase(getCharacteristics.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
