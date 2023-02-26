@@ -1,48 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Order, TableData } from '../../../data/types';
 import styles from './ReportsTable.module.css';
-import {
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TablePagination,
-  TableRow,
-  tableCellClasses,
-  tablePaginationClasses,
-} from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Box, Table, TableBody, TableRow } from '@mui/material';
 import ReportsTableHead from '../ReportsTableHead/ReportsTableHead';
 import { getComparator, stableSort } from '../../../helpers/sortTableHelper';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../../store/store';
 import { getTable } from '../reportsSlice';
+import { StyledTableCell, StyledTablePagination } from './styledComponents';
 
 type Props = {
   station: string;
 };
-
-const StyledTableCell: any = styled(TableCell)(() => ({
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 10,
-    padding: '2px 5px 2px 0',
-  },
-  '&:first-of-type': {
-    paddingLeft: '20px',
-  },
-  '&:last-of-type': {
-    paddingRight: '20px',
-  },
-}));
-
-const StyledTablePagination: any = styled(TablePagination)(() => ({
-  [`&.${tablePaginationClasses.root}, div`]: {
-    minHeight: 0,
-  },
-  [`&.${tablePaginationClasses.root}, p`]: {
-    fontSize: 10,
-  },
-}));
 
 function ReportsTable({ station }: Props): JSX.Element {
   const [order, setOrder] = useState<Order>('asc');

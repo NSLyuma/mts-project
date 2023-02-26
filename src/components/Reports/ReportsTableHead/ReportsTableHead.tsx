@@ -1,17 +1,10 @@
 import React from 'react';
 import styles from './ReportsTableHead.module.css';
-import {
-  TableCell,
-  TableHead,
-  TableRow,
-  TableSortLabel,
-  Box,
-  tableCellClasses,
-} from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { TableHead, TableRow, TableSortLabel, Box } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 import { headCells } from '../../../data/reportsTableHeadcells';
 import { Order, TableData } from '../../../data/types';
+import { StyledTableCell } from './styledComponents';
 
 type Props = {
   order: Order;
@@ -21,23 +14,6 @@ type Props = {
     property: keyof TableData,
   ) => void;
 };
-
-const StyledTableCell = styled(TableCell)(() => ({
-  [`&.${tableCellClasses.head}`]: {
-    fontSize: 10,
-    textAlign: 'left',
-    padding: 0,
-    borderBottom: '1px solid #e6e6e6',
-    color: '#000',
-    whiteSpace: 'nowrap',
-  },
-  '&:first-of-type': {
-    paddingLeft: '20px',
-  },
-  '&:last-of-type': {
-    paddingRight: '20px',
-  },
-}));
 
 function ReportsTableHead({
   order,
