@@ -59,5 +59,7 @@ export type ReportsStoreState = {
   lines: Line[];
   table: TableData[];
   characteristics: Characteristic[];
+  isOpenCharts: boolean;
+  station: string;
   error: string | undefined;
 };

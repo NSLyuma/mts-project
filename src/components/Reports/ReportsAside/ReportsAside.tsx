@@ -1,13 +1,14 @@
-import React, { useContext, useState } from 'react';
-import { ReportsContext } from '../../../store/reportsStore';
+import React, { useState } from 'react';
+import { useAppDispatch } from '../../../store/store';
 import ReportsDevices from '../ReportsDevices/ReportsDevices';
+import { openChart } from '../reportsSlice';
 import ReportsSubway from '../ReportsSubway/ReportsSubway';
 import styles from './ReportsAside.module.css';
 
 function ReportsAside(): JSX.Element {
   const [page, setPage] = useState<string>('subway');
 
-  const { dispatch } = useContext(ReportsContext);
+  const dispatch = useAppDispatch();
 
   return (
     <div className={styles.aside}>
@@ -27,10 +28,7 @@ function ReportsAside(): JSX.Element {
           }`}
           onClick={(): void => {
             setPage('devices');
-            dispatch({
-              type: 'SET_OPEN_CHARTS',
-              payload: { isOpenCharts: false, name: '' },
-            });
+            dispatch(openChart({ isOpenCharts: false, station: '' }));
           }}
         >
           Список устройств

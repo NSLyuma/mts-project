@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ReportsMain.module.css';
 import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -10,8 +10,10 @@ import {
   getDatesList,
   getDateString,
 } from '../../../helpers/datesHelper';
-import { ReportsContext } from '../../../store/reportsStore';
 import ReportsTable from '../ReportsTable/ReportsTable';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store/store';
+import { ReportsStoreState } from '../../../data/types';
 
 registerLocale('ru', ru);
 setDefaultLocale('ru');
@@ -28,7 +30,9 @@ function ReportsMain(): JSX.Element {
   const [endDate, setEndDate] = useState<Date>(new Date());
   const [problemsData, setProblemsData] = useState<ProblemsData[]>([]);
 
-  const { state } = useContext(ReportsContext);
+  const state: ReportsStoreState = useSelector(
+    (state: RootState) => state.reports,
+  );
 
   useEffect(() => {
     if (aggregation === 'day') {
@@ -40,7 +44,7 @@ function ReportsMain(): JSX.Element {
         ]),
       );
     }
-  }, [startDate, endDate, state.station.name]);
+  }, [startDate, endDate, state.station]);
 
   const setPeriodChart = (period: string, days: number): void => {
     setPeriod(period);
@@ -307,10 +311,10 @@ function ReportsMain(): JSX.Element {
         </div>
       </div>
 
-      {state.station.isOpenCharts ? (
+      {state.isOpenCharts ? (
         <div className={styles.data}>
           <ReportsCharts problemsData={problemsData} station={state.station} />
-          <ReportsTable station={state.station.name} />
+          <ReportsTable station={state.station} />
         </div>
       ) : (
         ''

@@ -12,7 +12,6 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js';
 import { ProblemsData } from '../ReportsMain/ReportsMain';
-import { StationData } from '../../../store/reportsStore';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import ReportsChartsList from '../ReportsChartsList/ReportsChartsList';
 
@@ -32,7 +31,7 @@ ChartJS.defaults.font.family = 'Roboto';
 
 type Props = {
   problemsData: ProblemsData[];
-  station: StationData;
+  station: string;
 };
 
 function ReportsCharts({ problemsData, station }: Props): JSX.Element {
@@ -87,7 +86,7 @@ function ReportsCharts({ problemsData, station }: Props): JSX.Element {
     <>
       <div className={styles.bar}>
         <p className={styles.bar_title}>
-          График проблемных объектов: {station.name}
+          График проблемных объектов: {station}
         </p>
 
         <Bar

@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
-import { Station } from '../../../data/types';
-import { ReportsContext } from '../../../store/reportsStore';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { ReportsStoreState, Station } from '../../../data/types';
+import { RootState, useAppDispatch } from '../../../store/store';
+import { openChart } from '../reportsSlice';
 import styles from './ReportsStation.module.css';
 
 type Props = {
@@ -8,19 +10,20 @@ type Props = {
 };
 
 function ReportsStation({ station }: Props): JSX.Element {
-  const { state, dispatch } = useContext(ReportsContext);
+  const state: ReportsStoreState = useSelector(
+    (state: RootState) => state.reports,
+  );
+
+  const dispatch = useAppDispatch();
 
   return (
     <button
       className={`${styles.item} ${
-        state.station.name === station.name && styles.item_active
+        state.station === station.name && styles.item_active
       }`}
-      onClick={(): void =>
-        dispatch({
-          type: 'SET_OPEN_CHARTS',
-          payload: { isOpenCharts: true, name: station.name },
-        })
-      }
+      onClick={(): void => {
+        dispatch(openChart({ isOpenCharts: true, station: station.name }));
+      }}
     >
       <span className={styles.title}>{station.name}</span>
 

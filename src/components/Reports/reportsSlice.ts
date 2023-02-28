@@ -6,6 +6,8 @@ const initialState: ReportsStoreState = {
   lines: [],
   table: [],
   characteristics: [],
+  isOpenCharts: false,
+  station: '',
   error: undefined,
 };
 
@@ -30,7 +32,12 @@ export const getTable = createAsyncThunk('reports/table', async () => {
 export const reportsSlice = createSlice({
   name: 'reports',
   initialState,
-  reducers: {},
+  reducers: {
+    openChart: (state, action) => {
+      state.isOpenCharts = action.payload.isOpenCharts;
+      state.station = action.payload.station;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getLines.fulfilled, (state, action) => {
@@ -53,5 +60,7 @@ export const reportsSlice = createSlice({
       });
   },
 });
+
+export const { openChart } = reportsSlice.actions;
 
 export default reportsSlice.reducer;
