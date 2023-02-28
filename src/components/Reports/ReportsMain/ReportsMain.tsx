@@ -118,65 +118,64 @@ function ReportsMain(): JSX.Element {
     setPeriod('7d');
     setProblemsData([]);
 
-    setTimeout(() => {
-      if (aggregation === 'day') {
-        getDatesList(getDateAgo(new Date(), 6), new Date()).map((date) =>
-          setProblemsData((prev) => [
-            ...prev,
-            { date, problems: Math.floor(Math.random() * 10) },
-          ]),
-        );
-      } else if (aggregation === 'week') {
-        const count = Math.ceil(6 / 7);
-        const periods = [];
+    if (aggregation === 'day') {
+      // changeChart(6);
+      getDatesList(getDateAgo(new Date(), 6), new Date()).map((date) =>
+        setProblemsData((prev) => [
+          ...prev,
+          { date, problems: Math.floor(Math.random() * 10) },
+        ]),
+      );
+    } else if (aggregation === 'week') {
+      const count = Math.ceil(6 / 7);
+      const periods = [];
 
-        for (let i = 0; i < count; i++) {
-          if (period === '7d') {
-            periods[i] = [
-              `${getDateString(
-                getDateAgo(new Date(), 6 * (i + 1)),
-              )} - ${getDateString(getDateAgo(new Date(), 6 * i))}`,
-            ];
-          } else if (period === '14d') {
-            periods[i] = [
-              `${getDateString(
-                getDateAgo(new Date(), Math.ceil(13 / 2) * (i + 1) - 1),
-              )} - ${getDateString(
-                getDateAgo(new Date(), Math.ceil(13 / 2) * i),
-              )}`,
-            ];
-          } else {
-            periods[i] = [
-              `${getDateString(
-                getDateAgo(new Date(), Math.floor(31 / 4) * (i + 1) - 1),
-              )} - ${getDateString(
-                getDateAgo(new Date(), Math.floor(31 / 4) * i),
-              )}`,
-            ];
-          }
+      for (let i = 0; i < count; i++) {
+        if (period === '7d') {
+          periods[i] = [
+            `${getDateString(
+              getDateAgo(new Date(), 6 * (i + 1)),
+            )} - ${getDateString(getDateAgo(new Date(), 6 * i))}`,
+          ];
+        } else if (period === '14d') {
+          periods[i] = [
+            `${getDateString(
+              getDateAgo(new Date(), Math.ceil(13 / 2) * (i + 1) - 1),
+            )} - ${getDateString(
+              getDateAgo(new Date(), Math.ceil(13 / 2) * i),
+            )}`,
+          ];
+        } else {
+          periods[i] = [
+            `${getDateString(
+              getDateAgo(new Date(), Math.floor(31 / 4) * (i + 1) - 1),
+            )} - ${getDateString(
+              getDateAgo(new Date(), Math.floor(31 / 4) * i),
+            )}`,
+          ];
         }
+      }
 
-        periods.reverse().map((period) =>
-          setProblemsData((prev) => [
-            ...prev,
-            {
-              date: period[0],
-              problems: Math.floor(Math.random() * 20),
-            },
-          ]),
-        );
-      } else {
+      periods.reverse().map((period) =>
         setProblemsData((prev) => [
           ...prev,
           {
-            date: `${getDateString(
-              getDateAgo(new Date(), 31),
-            )} - ${getDateString(new Date())}`,
-            problems: Math.floor(Math.random() * 10),
+            date: period[0],
+            problems: Math.floor(Math.random() * 20),
           },
-        ]);
-      }
-    });
+        ]),
+      );
+    } else {
+      setProblemsData((prev) => [
+        ...prev,
+        {
+          date: `${getDateString(getDateAgo(new Date(), 31))} - ${getDateString(
+            new Date(),
+          )}`,
+          problems: Math.floor(Math.random() * 10),
+        },
+      ]);
+    }
   };
 
   return (
